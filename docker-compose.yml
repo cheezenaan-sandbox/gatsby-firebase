@@ -7,7 +7,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    command: yarn develop --host 0.0.0.0
+    command: /bin/bash -c "while true; do sleep 60; done"
     volumes:
       - .:/app:${CONSISTENCY:-cached}
       - ./node_modules/:/app/node_modules:${CONSISTENCY:-cached}
