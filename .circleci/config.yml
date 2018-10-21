@@ -1,9 +1,11 @@
 version: 2
+default_settings: &default_settings
+  docker:
+    - image: circleci/node:8.12.0-stretch
+  working_directory: ~/repo
 jobs:
   build:
-    docker:
-      - image: circleci/node:8.12.0-stretch
-    working_directory: ~/repo
+    <<: *default_settings
     steps:
       - checkout
       - restore_cache:
@@ -21,9 +23,7 @@ jobs:
             - firebase.json
       - run: echo "Sound! Euphonium"
   deploy_production:
-    docker:
-      - image: circleci/node:8.12.0-stretch
-    working_directory: ~/repo
+    <<: *default_settings
     steps:
       - attach_workspace:
           at: ~/repo
