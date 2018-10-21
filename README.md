@@ -4,10 +4,28 @@
 
 ## Introduction
 
-```/bin/sh
-# on develop
-$ docker-compose up
+### Bootstrap
 
-# on production build
-$ docker-compose run --rm gatsby build
+```/bin/sh
+bin/docker init
+```
+
+### Development
+
+To develop, run the service:
+
+```/bin/sh
+bin/docker start
+```
+
+When finising stop the service:
+
+```/bin/sh
+bin/docker stop
+```
+
+### Production build
+
+```/bin/sh
+bin/gatsby build
 ```
