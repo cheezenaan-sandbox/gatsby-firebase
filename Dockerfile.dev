@@ -20,6 +20,5 @@ RUN chmod +x /bin/entrykit && \
 
 ENTRYPOINT [ \
   "prehook", "node -v", "--", \
-  "prehook", "yarn install --no-progress", "--", \
-  "./docker/entrypoint.sh" \
+  "prehook", "yarn install --no-progress", "--" \
   ]
