@@ -1,30 +1,16 @@
-FROM alpine:3.8 as entrykit
+FROM buildpack-deps:stretch-curl as entrykit
 
 # Install Entrykit
 ENV ENTRYKIT_VERSION="0.4.0"
 RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERSION}/entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz && \
   tar -xvzf entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz
 
-FROM node:8.12.0-alpine as dev
+FROM node:8.12.0-stretch as dev
 LABEL MAINTAINER "cheezenaan <cheezenaan@gmail.com>"
 
 ENV \
   APP_ROOT="/app" \
   LANG="C.UTF-8"
-
-RUN \
-  # dependencies for sharp
-  # ref. https://github.com/aripalo/gatsby-docker/blob/master/Dockerfile#L5-L9
-  apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing \
-  vips-tools \
-  vips-dev \
-  fftw-dev \
-  gcc \
-  g++ \
-  make \
-  libc6-compat && \
-  apk add --no-cache python && \
-  rm -rf /var/cache/apk/*
 
 WORKDIR $APP_ROOT
 
