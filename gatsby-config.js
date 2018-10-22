@@ -25,5 +25,11 @@ module.exports = {
         name: "pages",
       },
     },
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [],
+      },
+    },
   ],
 };
